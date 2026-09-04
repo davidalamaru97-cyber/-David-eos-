@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>By_David_eos — Photography</title>
+  <meta name="description" content="By_David_eos — fotograf din Bârlad. Portrete, botezuri, cupluri și evenimente. Programează o ședință foto.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-soft: #111111;
+      --text: #f4f1eb;
+      --muted: #a5a19a;
+      --line: rgba(244, 241, 235, 0.15);
+      --accent: #d8d0c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    /* CURSOR */
+    .cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 28px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(14px);
+      padding-top: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      position: relative;
+      color: #d8d5cf;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 1px;
+      background: white;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 5vw 8vh;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,0.09), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.035), transparent 35%),
+        linear-gradient(120deg, #080808, #151515 55%, #090909);
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.15), transparent 35%, rgba(0,0,0,0.55)),
+        radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55));
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 1050px;
+      animation: heroIn 1.3s ease forwards;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(70px, 13vw, 190px);
+      line-height: 0.82;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-style: italic;
+      margin-left: 9vw;
+    }
+
+    .hero-bottom {
+      margin-top: 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      max-width: 900px;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 430px;
+      font-size: 14px;
+    }
+
+    .scroll {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+    }
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 150px 5vw;
+    }
+
+    .section-number {
+      color: #77736d;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 7vw, 100px);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .section-title em {
+      font-weight: 400;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 10vw;
+      border-top: 1px solid var(--line);
+    }
+
+    .about-text {
+      max-width: 650px;
+      margin-top: 20px;
+    }
+
+    .about-text p {
+      color: #b3afa8;
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 25px;
+    }
+
+    .location {
+      margin-top: 50px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #77736d;
+    }
+
+    /* SERVICES */
+    .services {
+      border-top: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .service-list {
+      margin-top: 80px;
+      border-top: 1px solid var(--line);
+    }
+
+    .service {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding 0.4s ease;
+    }
+
+    .service:hover {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .service-name {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 4vw, 50px);
+    }
+
+    .service-number {
+      color: #77736d;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+    }
+
+    /* BOOKING */
+    .booking {
+      border-top: 1px solid var(--line);
+    }
+
+    .booking-intro {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 10vw;
+    }
+
+    .booking-description {
+      color: var(--muted);
+      max-width: 480px;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+
+    form {
+      margin-top: 70px;
+      max-width: 850px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .field {
+      margin-bottom: 38px;
+    }
+
+    label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #858078;
+      margin-bottom: 12px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #363431;
+      color: var(--text);
+      padding: 13px 0;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ddd8d0;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    select option {
+      background: #111;
+      color: white;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      border: 1px solid #77736d;
+      background: transparent;
+      color: white;
+      padding: 18px 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+      font-size: 10px;
+      transition: 0.4s ease;
+    }
+
+    .submit-button:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.5;
+      cursor: wait;
+    }
+
+    .form-status {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #bdb8af;
+      display: none;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #111;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-content {
+      text-align: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .contact h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(55px, 9vw, 130px);
+      font-weight: 400;
+      line-height: 0.9;
+    }
+
+    .contact h2 em {
+      display: block;
+    }
+
+    .contact-subtitle {
+      color: var(--muted);
+      margin: 40px auto;
+      max-width: 500px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      border: 1px solid #3b3935;
+      padding: 16px 25px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      transition: 0.35s ease;
+    }
+
+    .contact-link:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 5vw;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #77736d;
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      header {
+        padding: 22px 6vw;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 0 6vw 8vh;
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 19vw, 110px);
+      }
+
+      .hero h1 span {
+        margin-left: 5vw;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .scroll {
+        writing-mode: horizontal-tb;
+      }
+
+      section {
+        padding: 100px 6vw;
+      }
+
+      .about,
+      .booking-intro {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .about-text p {
+        font-size: 16px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .service {
+        padding: 25px 0;
+      }
+
+      .service-name {
+        font-size: 29px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+
+      .cursor {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor"></div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <a href="#home" class="logo">By_David_eos</a>
+
+    <nav>
+      <a href="#about">Despre</a>
+      <a href="#services">Servicii</a>
+      <a href="#booking">Programare</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Photographer · Bârlad
+        </div>
+
+        <h1>
+          Momente
+          <span>care rămân.</span>
+        </h1>
+
+        <div class="hero-bottom">
+
+          <p class="hero-description">
+            Fotografie sinceră, elegantă și cinematică.
+            Portrete, cupluri, botezuri și evenimente
+            transformate în amintiri pe care le vei păstra.
+          </p>
+
+          <div class="scroll">
+            Scroll to explore
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+      <div>
+        <div class="section-number">01 / DESPRE</div>
+
+        <h2 class="section-title">
+          Dincolo de<br>
+          <em>fotografie.</em>
+        </h2>
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          Sunt David, fotograf din Bârlad, iar pentru mine
+          fotografia înseamnă mai mult decât o imagine.
+        </p>
+
+        <p>
+          Îmi place să surprind oamenii așa cum sunt,
+          emoțiile reale și acele momente mici care,
+          peste ani, devin cele mai importante amintiri.
+        </p>
+
+        <p>
+          Fie că este vorba despre un portret, o poveste
+          de cuplu, un botez sau un eveniment important,
+          îmi doresc ca fiecare fotografie să aibă
+          personalitate.
+        </p>
+
+        <div class="location">
+          Bârlad · România
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+      <div class="section-number">02 / SERVICII</div>
+
+      <h2 class="section-title">
+        Ce putem<br>
+        <em>crea împreună.</em>
+      </h2>
+
+      <div class="service-list">
+
+        <div class="service">
+          <span class="service-name">Portrete</span>
+          <span class="service-number">01</span>
+        </div>
+
+        <div class="service">
+          <span class="service-name">Botezuri</span>
+          <span class="service-number">02</span>
+        </div>
+
+        <div class="service">
+          <span class="service-name">Cupluri</span>
+          <span class="service-number">03</span>
+        </div>
+
+        <div class="service">
+          <span class="service-name">Evenimente</span>
+          <span class="service-number">04</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+
+      <div class="booking-intro">
+
+        <div>
+          <div class="section-number">03 / PROGRAMARE</div>
+
+          <h2 class="section-title">
+            Hai să<br>
+            <em>vorbim.</em>
+          </h2>
+        </div>
+
+        <div>
+          <p class="booking-description">
+            Completează formularul de mai jos și îmi voi
+            trimite automat cererea. Îți voi răspunde cât
+            mai curând pentru a stabilim toate detaliile.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!--
+        IMPORTANT:
+        Înlocuiește YOUR_FORMSPREE_ID cu ID-ul primit de la Formspree.
+
+        Exemplu:
+        https://formspree.io/f/abcdwxyz
+      -->
+
+      <form
+        id="bookingForm"
+        action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+        method="POST"
+      >
+
+        <input type="hidden" name="_subject" value="Nouă cerere de programare — By_David_eos">
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="name">Nume complet</label>
+            <input
+              type="text"
+              id="name"
+              name="Nume"
+              placeholder="Numele tău"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Telefon</label>
+            <input
+              type="tel"
+              id="phone"
+              name="Telefon"
+              placeholder="07xx xxx xxx"
+              required
+            >
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="service">Tipul ședinței</label>
+
+            <select id="service" name="Serviciu" required>
+              <option value="" disabled selected>
+                Selectează
+              </option>
+              <option value="Portret">Portret</option>
+              <option value="Botez">Botez</option>
+              <option value="Cuplu">Cuplu</option>
+              <option value="Eveniment">Eveniment</option>
+            </select>
+
+          </div>
+
+
+          <div class="field">
+            <label for="date">Data dorită</label>
+
+            <input
+              type="date"
+              id="date"
+              name="Data dorită"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="field">
+
+            <label for="time">Ora dorită</label>
+
+            <input
+              type="time"
+              id="time"
+              name="Ora dorită"
+              required
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label for="email">Email</label>
+
+            <input
+              type="email"
+              id="email"
+              name="Email"
+              placeholder="emailul tău"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="message">Mesaj</label>
+
+          <textarea
+            id="message"
+            name="Mesaj"
+            placeholder="Spune-mi câteva detalii despre ședința pe care ți-o dorești..."
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="submit-button"
+          id="submitButton"
+        >
+          Trimite cererea
+          <span>→</span>
+        </button>
+
+
+        <div class="form-status" id="formStatus"></div>
+
+      </form>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+      <div class="contact-content">
+
+        <div class="section-number">
+          04 / CONTACT
+        </div>
+
+        <h2>
+          Let's create
+          <em>something.</em>
+        </h2>
+
+        <p class="contact-subtitle">
+          Pentru întrebări, disponibilitate sau o programare,
+          mă poți contacta direct.
+        </p>
+
+        <div class="contact-links">
+
+          <a
+            class="contact-link"
+            href="https://wa.me/40761508052"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            class="contact-link"
+            href="https://www.instagram.com/by_david_eos/"
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+
+          <a
+            class="contact-link"
+            href="mailto:davidalamaru65@gmail.com"
+          >
+            Email
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <span>
+      © 2026 By_David_eos
+    </span>
+
+    <span>
+      Photography · Bârlad
+    </span>
+
+  </footer>
+
+
+  <script>
+
+    /* HEADER ON SCROLL */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* CUSTOM CURSOR */
+
+    const cursor = document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", (e) => {
+
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+
+    });
+
+
+    /* BOOKING FORM */
+
+    const form = document.getElementById("bookingForm");
+    const button = document.getElementById("submitButton");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+      button.disabled = true;
+      button.innerHTML = "Se trimite...";
+
+      status.style.display = "none";
+
+      const formData = new FormData(form);
+
+      try {
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (response.ok) {
+
+          status.style.display = "block";
+          status.innerHTML =
+            "✓ Cererea ta a fost trimisă. Îți voi răspunde cât mai curând.";
+
+          form.reset();
+
+          button.disabled = false;
+          button.innerHTML = "Trimis ✓";
+
+          setTimeout(() => {
+            button.innerHTML = 'Trimite cererea <span>→</span>';
+          }, 4000);
+
+        } else {
+
+          throw new Error("Form submission failed.");
+
+        }
+
+      } catch (error) {
+
+        status.style.display = "block";
+        status.innerHTML =
+          "A apărut o problemă. Te rog încearcă din nou sau contactează-mă pe WhatsApp.";
+
+        button.disabled = false;
+        button.innerHTML = 'Trimite cererea <span>→</span>';
+
+      }
+
+    });
+
+
+    /* PREVENT PAST DATES */
+
+    const dateInput = document.getElementById("date");
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    dateInput.min = `${year}-${month}-${day}`;
+
+  </script>
+
+</body>
+</html>
